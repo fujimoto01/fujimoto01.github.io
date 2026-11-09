@@ -453,11 +453,8 @@
       });
       var saved = null;
       try { saved = localStorage.getItem('lang'); } catch (e) {}
-      if (saved === 'en' || saved === 'pt') {
-        setLang(saved);
-      } else if ((navigator.language || '').toLowerCase().indexOf('pt') === 0) {
-        setLang('pt');
-      }
+      // English by default; only a visitor's own click on PT is remembered
+      if (saved === 'pt') { setLang('pt'); }
 
       document.querySelector('.theme').addEventListener('click', function () {
         var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
